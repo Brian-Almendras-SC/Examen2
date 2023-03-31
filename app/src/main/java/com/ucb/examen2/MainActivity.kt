@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     val endPoint = restApiAdapter.connectionApi()
     val bookResponseCall = endPoint.getAllPost()
     val listPost= ArrayList<Post>()
-    var count=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +44,12 @@ class MainActivity : AppCompatActivity() {
                 posts?.forEach {
                     Log.d("RESP POST", it.body)
                     listPost.add(it)
+
                 }
             }
         })
         recyclerView=findViewById(R.id.recycler_view)
         recyclerView.layoutManager=linearLayoutManager
-        //
-        recyclerView.adapter=BookListAdapter(listPost,this)
+        recyclerView.adapter=PostListAdapter(listPost,this)
     }
 }
